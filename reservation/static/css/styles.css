@@ -1,0 +1,12 @@
+.box-1{
+	width: 375px;
+	border:3px black solid;
+	padding:25px;
+	margin:auto;
+	background-color:#fff;
+}
+
+.col-lg-5{
+	padding:0;
+	margin:auto;
+}

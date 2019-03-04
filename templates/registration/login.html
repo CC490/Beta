@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Log-In{% endblock %}
+{% block content %}
+	<!-- Log-In Header -->
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-2"><img src="http://thechallengercenter.net/wp-content/uploads/2012/07/Challenger_Center_General_Mid-194x300.jpg" class="img-fluid" ></div>
+		<div class="col-xs-1"></div>
+		<div class="col-lg-5"><h1>Challenger Learning Center</h1></div>
+		<div class="col-lg-1"></div>
+	</div>
+
+	<br>
+	
+	<!-- Log-In Form -->
+	<div class="box-1">
+		<center>	
+			<form method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" class="btn btn-secondary btn-md">Log In</button>
+			</form>
+		</center>
+	</div>
+
+{% endblock %}

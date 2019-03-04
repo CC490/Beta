@@ -1,0 +1,38 @@
+# only need it for AWS + elastic beanstalk
+awsebcli==3.14.10
+# we probably won't need this since client won't be on aws
+botocore==1.12.86
+# I don't think we need this at all, commenting out
+# cement==2.8.2
+# good for security, installing
+certifi==2018.11.29
+# this is probably unnecessary but for now ok
+chardet==3.0.4
+# why?
+colorama==0.3.9
+# limiting it to 2.1.1? Django is included in pipfile packages.
+Django==2.1.1
+# probably necessary, installing
+docutils==0.14
+# looks necessary for domain naming
+idna==2.7
+# looks handy, installing
+jmespath==0.9.3
+# probably handy https://pypi.org/project/pathspec/
+pathspec==0.5.5
+# have installed jic, but pytz is probably better
+python-dateutil==2.7.5
+# for time zone stuff in python
+pytz==2018.9
+# very why
+PyYAML==3.13
+# looks handy
+requests==2.20.1
+# why? redundant under pipenv?
+semantic-version==2.5.0
+# why?
+six==1.11.0
+# why?
+termcolor==1.1.0
+# looks good
+urllib3==1.24.1

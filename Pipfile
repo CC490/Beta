@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+selenium = "*"
+
+[packages]
+django = "*"
+django-bootstrap3 = "*"
+requests = "*"
+python-dateutil = "*"
+chardet = "*"
+urllib3 = "*"
+jmespath = "*"
+docutils = "*"
+certifi = "*"
+pytz = "*"
+djangorestframework = "*"
+virtualenvwrapper-win = "*"
+xhtml2pdf = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true

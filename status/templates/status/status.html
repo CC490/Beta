@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>    
+      <title>Reservation Status</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   </head>
+    <body class="body" style="background-color: #F4F4F3; max-width: 95%;">
+	{% if user.is_authenticated %}
+	<br><br>
+      {% block content %}
+	<div class = "row">
+		<div class="col text-center"><button onclick="location.href='http://127.0.0.1:8000/'" type="button" class="btn btn-lg btn-default">Home</button></div>
+        <div class="col"><center><h1>Reservation Status</h1></center></div>
+        <div class="col"></div>
+	</div>
+	<br>
+	<br>
+    <center>
+		    <div class="container-fluid" style="background-color: #FFFFF2; border:2px solid #000000; min-height:95%; max-width: 80%;">
+            <center>
+                <br>
+				<form action="statusUpdate/"  method="POST" style="text-justify; font-size:20px;>
+                  {% csrf_token %}
+                  <center>
+					  <h2>School/Group Name: {{ res_obj.schoolName }}</h2>
+					  <br>
+					  <h3>Reservation ID: {{status_obj.pk}}</h3>
+					  <br>
+					  <div class = "row">
+						  <div class ="col-sm">Deposit Due:
+					  	      <select name="depDue">
+								  <option value="{{status_obj.depDue}}" selected hidden>{{status_obj.depDue}}</option>
+							    <option value="Yes">Yes</option>
+							    <option value="No">No</option>
+					          </select>
+						  </div>
+						  <div class ="col-sm">Deposit Received:
+					  	      <select name="depRec">
+								  <option value="{{status_obj.depRec}}" selected hidden>{{status_obj.depRec}}</option>
+							      <option value="No">No</option>
+							      <option value="Yes">Yes</option>
+							  </select>
+						  </div>
+						  <div class ="col-sm">Cancelled:
+					  	      <select name="cancelled">
+								  <option value="{{status_obj.cancelled}}" selected hidden>{{status_obj.cancelled}}</option>
+							      <option value="No">No</option>
+							      <option value="Yes">Yes</option>
+					          </select>
+						  </div>
+					  </div>
+					  <br>
+					  <div class = "row">
+						  <div class ="col-sm-3">Confirmation Sent:
+					  	      <select name="conSent">
+								  <option value="{{status_obj.conSent}}" selected hidden>{{status_obj.conSent}}</option>
+							      <option value="No">No</option>
+							      <option value="Yes">Yes</option>
+					          </select>
+						  </div>
+						  <div class ="col-sm">Confirmation Received:
+					  	      <select name="conRec">
+								  <option value="{{status_obj.conRec}}" selected hidden>{{status_obj.conRec}}</option>
+							      <option value="No">No</option>
+							      <option value="Yes">Yes</option>
+					          </select>
+						  </div>
+						  <div class ="col-sm">Date Received:
+							  <input type="date" name="conRecDate" value="{{ status_obj.conRecDate|date:'Y-m-d' }}">
+						  </div>
+					  </div>
+					  <br>
+					  <div class = "row">
+						  <div class ="col-sm">Payment Amount:
+					  	      <input type="number" name = "payAmount" value = "{{status_obj.payAmount}}">
+						  </div>
+						  <div class ="col-sm">Payment Due:
+					  	      <input type="number" name = "paymentDue" value = "{{status_obj.paymentDue}}">
+						  </div>
+					  </div>
+					  <br>
+					  <input class="btn btn-default btn-lg" type="submit" value="Submit">
+					  <br><br>
+                  </center>
+               </form>
+            </center>
+         </div>
+      </center>
+      {% endblock %}
+	{% else %}
+		<center>
+			<h3>You are not logged in</h3><br>
+			<a href="/accounts/login">
+			<button type="button" class="btn btn-default btn-lg" name="login">Log In</button>
+			</a>
+		</center>
+		{% endif %}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>

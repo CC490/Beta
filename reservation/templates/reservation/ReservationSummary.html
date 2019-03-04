@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% block title %}<title>Reservation Summary</title>{% endblock %}
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body class="body" style="background-color: #F4F4F3; max-width: 95%;">
+		<p></p>
+		{% if user.is_authenticated %}
+        <div class = "row">
+            <div class="col text-center"><a href="http://127.0.0.1:8000/"><button type="button" name="home"
+                class="btn btn-default btn-lg">Home</button></a></div>
+				<div class="col text-center"><h1>Welcome {{ user.username }}!</h1><p></p></div>
+				<div class="col text-center"><h1></h1><p></p></div>
+			</div>
+		<br>
+        <div class="container-fluid" style="background-color: #FFFFF2; border:2px solid #000000; min-height:95%; max-width: 80%;">
+			{% csrf_token %}
+            <form method="POST" style="text-justify: auto; font-size: larger;">
+				<center>
+					<h1><br></h1>
+					<h2 style="text-justify: auto; font-size: x-large">School/Group Name: {{ res_obj.schoolName }}</h2>
+					<br>
+					<h3 style="text-justify: auto; font-size: x-large">ID: {{res_obj.pk}}</h3>
+					<br>
+                    <b>Name:</b> {{ res_obj.name }}
+                    <br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Street Address 1:</b> {{ res_obj.address1 }}</div>
+                        <div class="col text-center"><b>Street Address 2:</b> {{ res_obj.address2 }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>City:</b> {{ res_obj.city }}</div>
+                        <div class="col text-center"><b>State:</b> {{ res_obj.state }}</div>
+                        <div class="col text-center"><b>Zip Code:</b> {{ res_obj.zipCode }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Phone:</b> {{ res_obj.phone }}</div>
+                        <div class="col text-center"><b>Email:</b> {{ res_obj.email }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Location:</b> {{ res_obj.location }}</div>
+                        <div class="col text-center"><b>In District?</b> {{ res_obj.district }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Start Date:</b> {{ res_obj.dateStart }}</div>
+                        <div class="col text-center"><b>End Date:</b> {{ res_obj.dateEnd }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Start Time:</b> {{ res_obj.timeStart }}</div>
+                        <div class="col text-center"><b>End Time:</b> {{ res_obj.timeEnd }}</div>
+                        <div class="col text-center"><b>30 Minute Lunch?</b> {{ res_obj.lunch }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Level:</b> {{ res_obj.level }}</div>
+                        <div class="col text-center"><b>Grade Level:</b> {{ res_obj.gradeLevel }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>AEL:</b> {{ res_obj.ael }}</div>
+                        <div class="col text-center"><b>Mission:</b> {{ res_obj.mission }}</div>
+                        <div class="col text-center"><b>Tour:</b> {{ res_obj.tour }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Hand-On:</b> {{ res_obj.handsOn }}</div>
+                        <div class="col text-center"><b>eP:</b> {{ res_obj.eP }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Summer Camp:</b> {{ res_obj.summerCamp }}</div>
+                        <div class="col text-center"><b>Other Program:</b> {{ res_obj.otherProg }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Number of Students:</b> {{ res_obj.numStud }}</div>
+                        <div class="col text-center"><b>Number of Chaperones:</b> {{ res_obj.numChap }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Cost per Visitor:</b> {{ res_obj.visCost }}</div>
+                        <div class="col text-center"><b>Program Cost:</b> {{ res_obj.progCost }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Payment Due:</b> {{ res_obj.paymentDue }}</div>
+                        <div class="col text-center"><b>Internal Comments:</b> {{ res_obj.interComm }}</div>
+                    </div>
+					<br><br>
+                    <div class = "row">
+                        <div class="col text-center"><b>Slow to Pay:</b> {{ res_obj.slowPay }}</div>
+                        <div class="col text-center"><b>Say No:</b> {{ res_obj.sayNo }}</div>
+                    </div>
+					<br><br>
+                    <b>Program Comments:</b> {{ res_obj.progComm }}
+					<br><br>
+				</center>
+				<!--edit feature needs url resolution-->
+				<center>
+					<a href="{% url 'Revise Reservation' res_obj.id %}">
+						<button type="button" name="editRes" class="btn btn-default btn-lg">Edit</button>
+					</a>
+					<a href="{% url 'Delete Reservation' res_obj.id %}">
+						<button type="button" name="delResStat" class="btn btn-default btn-lg">Delete</button>
+					</a>
+				</center>
+				<br><br>
+            </form>
+        </div>
+        <br><br><br>
+		{% else %}
+		<center>
+			<h3>You are not logged in</h3><br>
+			<a href="/accounts/login">
+			<button type="button" class="btn btn-default btn-lg" name="login">Log In</button>
+			</a>
+		</center>
+		{% endif %}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	</body>
+</html>

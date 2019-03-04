@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>    
+      <title>Create Reservation</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   </head>
+    
+    
+    
+    <body style="background-color:#F4F4F3">
+
+	<br>
+      {% block content %}
+	<div class = "row">
+		<div class="col text-center"><h1>Please enter the new reservation:</h1></div>
+      <div class="col text-center"><button onclick="location.href='http://127.0.0.1:8000/'" type="button" 
+         name="home" class="btn btn-default btn-lg">Home</button></div>
+	</div>
+	
+	<br>
+	
+      <center>
+         <div class="container-fluid" style="border:2px solid #000000; min-height:95%; max-width: 60%; background-color:#FFFFFF">
+            
+            <center>
+
+				<br>
+               <form action="reservationCreate/"  method="POST" style="text-justify: auto">
+                  
+                  {% csrf_token %}
+                  <center>
+                     School/Group Name:
+						<input type="text" name="schoolName" maxlength = "140">
+
+					  Contact Person:
+                        <input type="text" name="name" maxlength = "140"><br><br>
+
+
+					 Street Address 1:
+						<input type="text" name="address1" maxlength = "140">
+
+					  Street Address 2:
+						<input type="text" name="address2" maxlength = "140"><br><br>
+
+					 City:
+						<input type="text" name="city" maxlength = "45">
+						
+					 State:
+						<input type="text" name="state" maxlength = "45">
+						
+					 Zip Code:
+						<input type="number" name="zipCode"><br><br>
+
+					 Phone:
+						<input type="text" name="phone">
+
+					 Email:
+						<input type="email" name="email" maxlength = "45"><br><br>
+
+					  Location:
+					  	<select name="location">
+							<option value="at CLC">at CLC</option>
+							<option value="Traveling CLC">Traveling CLC</option>
+					    </select>
+
+					  In District?
+						<select name="district">
+							<option value="on">In-District</option>
+							<option value="off">Out-of-District</option>
+							<option value="off">Special Event(Booth, Career Days, etc.)</option>
+							<option value="off">Summer Program</option>
+						</select><br><br>
+
+					  Start Date:
+                        <input type="date" name = "dateStart">
+
+                  End Date:
+                        <input type="date" name = "dateEnd"><br><br>
+
+					  Start Time:
+						<input type="time" name = "timeStart">
+
+					 End Time:
+						<input type="time" name = "timeEnd">
+
+					 30 Minute Lunch?
+						<input type="checkbox" name = "lunch" checked="True"><br><br>
+
+					  Level:
+					  	<select name="level">
+							<option type="text" value="Elementary">Elementary</option>
+							<option type="text" value="Middle">Middle</option>
+							<option type="text" value="High">High</option>
+							<option type="text" value="Adult">Adult</option>
+							<option type="text" value="Other">Other</option>
+					    </select>
+
+					  Grade Level:
+						<input type="number" name = "gradeLevel"><br><br>
+
+					  AEL Programs:
+					  <select name="ael">
+						  <option type="text" value="" disabled selected>None</option>
+						  <option type="text" value="Intro to Flight">Intro to Flight</option>
+						  <option type="text" value="Drone">Drone</option>
+						  <option type="text" value="AEL: Other">AEL: Other</option>
+					  </select><br><br>
+
+					   Mission Programs:
+					  <select name="mission">
+						  <option type="text" value="" disabled selected>None</option>
+						  <option type="text" value="MOON: Return to the Moon">MOON: Return to the Moon</option>
+						  <option type="text" value="COMET: Rendezvous with a Comet">COMET: Rendezvous with a Comet</option>
+						  <option type="text" value="MARS: Voyage to Mars">MARS: Voyage to Mars</option>
+					  </select>
+
+					  Tour Programs:
+					  <select name="tour">
+						  <option type="text" value="" disabled selected>None</option>
+						  <option type="text" value="Tour: MC/SS, AEL, eP">Tour: MC/SS, AEL, eP</option>
+						  <option type="text" value="our (Astrotot): MC/SS, theater, eP">Tour (Astrotot): MC/SS, theater, eP</option>
+						  <option type="text" value="Tour (Astrotot): MC/SS, theater, hands-on">Tour (Astrotot): MC/SS, theater, hands-on</option>
+						  <option type="text" value="Tour (Astrotot): MC/SS, theater, eP, hands-on">Tour (Astrotot): MC/SS, theater, eP, hands-on</option>
+					  </select><br><br>
+
+                 <!--use 'size="1" to limit the visible options to 1-->
+					  Hands-on Programs:
+					  <select multiple name="handsOn">
+						  <option type="text" value="" disabled selected>None</option>
+						  <option type="text" value="Arduino">Arduino</option>
+						  <option type="text" value="Bottle Rockets">Bottle Rockets</option>
+						  <option type="text" value="Earthquakes">Eathquakes</option>
+						  <option type="text" value="EV3">EV3</option>
+						  <option type="text" value="Light">Light</option>
+						  <option type="text" value="magnets">Magnets</option>
+						  <option type="text" value="Ozobots">Ozobots</option>
+						  <option type="text" value="Phases of the Moon">Phases of the Moon</option>
+						  <option type="text" value="Rockets (Model)">Rockets (Model)</option>
+						  <option type="text" value="Silly Space Stuff">Silly Space Stuff</option>
+						  <option type="text" value="Straw Rockets">Straw Rockets</option>
+						  <option type="text" value="Telescopes">Telescopes</option>
+						  <option type="text" value="Water Cycle">Water Cycle</option>
+						  <option type="text" value="Weather">Weather</option>
+					  </select>
+
+					  ePlanetarium Programs:
+					  <select multiple name="eP">
+						  <option type="text" value="" disabled selected>None</option>
+						  <option type="text" value="Earth's Wild Ride">Earth's Wild Ride</option>
+						  <option type="text" value="Impact!">Impact!</option>
+						  <option type="text" value="Back to the Moon">Back to the Moon</option>
+						  <option type="text" value="We Choose Space">We Choose Space</option>
+						  <option type="text" value="Flight Adventure">Flight Adventure</option>
+						  <option type="text" value="Saturn, the Ring World">Saturn, the Ring World</option>
+						  <option type="text" value="It's About Time">It's About Time</option>
+						  <option type="text" value="Two Small Pieces of Glass">Two Small Pieces of Glass</option>
+					  </select><br><br>
+
+					  Summer Camp Programs:
+					  <select multiple name="summerCamp">
+						  <option type="text" value="" disabled selected>None</option>
+						  <option type="text" value="Astronaut Academy">Astronaut Academy</option>
+						  <option type="text" value="Aviation">Aviation</option>
+						  <option type="text" value="Robot">Robot</option>
+						  <option type="text" value="Rocket">Rocket</option>
+						  <option type="text" value="Arduino">Arduino</option>
+						  <option type="text" value="Fischertechnik">Fischertechnik</option>
+						  <option type="text" value="RC Pilot">RC Pilot</option>
+						  <option type="text" value="USC-Aviation">USC-Aviation</option>
+						  <option type="text" value="USC-Rockets">USC-Rockets</option>
+						  <option type="text" value="Girl Scout">Girl Scout</option>
+						  <option type="text" value="Drone">Drone</option>
+					  </select>
+
+					  Other:
+						<input type="text" name = "otherProg" maxlength="140"><br><br>
+
+					 Number of Students:
+						<input type="number" name = "numStud" max = "20" min="1">
+
+					 Number of Chaperones:
+						<input type="number" name = "numChap" max = "10" min = "1"><br><br>
+
+					 Cost per Visitor:
+						<input type="number" name = "visCost" max = "200" min = "0">
+
+					 Cost of Program Scheduled:
+						<input type="number" name = "progCost" max = "4000" min = "0"><br><br>
+					
+					Payment Due:
+                  <input type="number" name = "paymentDue" max = "4000" min = "0"><br><br>
+
+					 Comments (internal):
+					  <input type="text" name = "interComm" maxlength="250">
+
+					  Slow to Pay?
+					  	<input type="checkbox" name = "slowPay" checked="False">
+
+					  Just Say No?
+					  	<input type="checkbox" name = "sayNo" checked="False"><br><br>
+
+					  Programming Comments:
+                    <input type="text" name = "progComm" maxlength="140"><br><br>
+                    
+                    <input class="btn btn-default btn-lg" name="submit" type="submit" value="Submit"><br><br>
+                  </center>
+
+               </form>
+
+            </center>
+         </div>
+      </center>
+      {% endblock %}
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    </body>
+
+
+</html>

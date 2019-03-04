@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% block title %}<title>Status Summary</title>{% endblock %}
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   </head>
+	<body class="body" style="background-color: #F4F4F3; max-width: 95%;">
+	<br><br>
+		{% if user.is_authenticated %}
+			<div class = "row">
+            <div class="col text-center"><a href="http://127.0.0.1:8000/"><button type="button" name="home"
+                class="btn btn-default btn-lg">Home</button></a></div>
+				<div class="col text-center"><h1>Reservation Status</h1><p></p></div>
+				<div class="col text-center"><h1></h1><p></p></div>
+			</div>
+			<br><br>
+         <div class="container-fluid" style="font-size:20px; background-color: #FFFFF2; border:2px solid #000000; min-height:95%;
+            max-width: 80%;">
+            {% csrf_token %}
+               <center>
+				   <br>
+				   <h2>School/Group Name: {{res_obj.schoolName}}</h2>
+				   <br>
+				   <h3>Reservation ID: {{ status_obj.pk }}</h3>
+				   <br>
+				   <div class = "row">
+					   <div class="col text-center"><b>Deposit Due:</b> {{ status_obj.depDue }}</div>
+					   <div class="col text-center"><b>Deposit Received:</b> {{ status_obj.depRec }}</div>
+					   <div class="col text-center"><b>Cancelled:</b> {{ status_obj.cancelled }}</div>
+				   </div>
+				   <br>
+				   <div class = "row">
+					   <div class="col text-center"><b>Confirmation Sent:</b> {{ status_obj.conSent }}</div>
+					   <div class="col text-center"><b>Confirmation Received:</b> {{ status_obj.conRec }}</div>
+					   <div class="col text-center"><b>Date Received:</b> {{ status_obj.conRecDate|date:'m/d/Y' }}</div>
+				   </div>
+				   <br>
+				   <div class = "row">
+					   <div class="col text-center"><b>Payment Amount:</b> {{ status_obj.payAmount }}</div>
+					   <div class="col text-center"><b>Payment Due:</b> {{ status_obj.paymentDue }}</div>
+				   </div>
+				   <br>
+
+                  <a href="{% url 'Edit Status' status_obj.id %}">
+                     <button type="button" name="editStatus" class="btn btn-default btn-lg">Edit</button>
+                  </a>
+
+				   <!-- Think this is redundant, delete in reservation -->
+                  <!-- <a href="{% url 'Delete Status' status_obj.id %}">
+                        <button type="button" name="deleteStatRes" class="btn btn-default btn-lg">Delete Reservation</button>
+                  </a> -->
+            
+				   <a href="{% url 'Status PDF' status_obj.id %}">
+                     <button type="button" name="openPDF" class="btn btn-default btn-lg">Open as PDF</button>
+                  </a>
+               </center>
+               <br>
+         </div>
+		{% else %}
+		<center>
+			<h3>You are not logged in</h3><br>
+			<a href="/accounts/login">
+			<button type="button" class="btn btn-default btn-lg" name="login">Log In</button>
+			</a>
+		</center>
+		{% endif %}
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	</body>
+</html>
